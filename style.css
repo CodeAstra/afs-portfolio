@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #f1c40f;
+  --primary-color: transparent;
   --font-color: #666;
   --font-color-lighter: #aaa;
   --font-color-stronger: #333;
@@ -22,6 +22,10 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
+body {
+  font-size: 1.6rem;
+}
+
 main {
   box-sizing: border-box;
   background-color: var(--bg-color);
@@ -29,6 +33,29 @@ main {
   width: 90vw;
   margin: 4rem auto;
   padding: 3rem;
+  position: relative;
+}
+
+ul.color-switcher {
+  position: absolute;
+  top: -3.5rem;
+  right: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+ul.color-switcher li {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  box-sizing: border-box;
+}
+
+ul.color-switcher li.active {
+  border-color: var(--bg-color);
 }
 
 nav {
@@ -64,6 +91,7 @@ nav a.brand strong {
 nav ul {
   float: right;
   margin: 0;
+  padding: 0;
 }
 
 nav ul li {
@@ -80,4 +108,9 @@ nav ul li a {
 nav ul li.active a,
 nav ul li a:hover {
   opacity: 1;
+}
+
+footer {
+  text-align: center;
+  color: var(--bg-color);
 }
