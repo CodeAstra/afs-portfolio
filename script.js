@@ -27,13 +27,6 @@ const colorSwitcher = {
 
       colorSwitcherContainer.appendChild(colorChoice);
     }
-    // const colorChoices = document.querySelectorAll("ul.color-switcher li");
-    // for (const colorChoice of colorChoices) {
-    //   colorChoice.style.setProperty(
-    //     "background-color",
-    //     colorChoice.dataset.color
-    //   );
-    // }
   },
   setTheFirstColor: function () {
     const firstColor = document.querySelector("ul.color-switcher li").dataset
