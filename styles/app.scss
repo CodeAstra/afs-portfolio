@@ -1,3 +1,19 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+
 :root {
   --primary-color: transparent;
   --font-color: #666;
@@ -7,6 +23,10 @@
   --box-shadow: 0.3rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
   --box-shadow-sm: 0.1rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
   --box-shadow-lg: 0 0 2rem rgba(0, 0, 0, 0.3);
+  --responsive-breakpoint-sm: 576px;
+  --responsive-breakpoint-md: 768px;
+  --responsive-breakpoint-lg: 992px;
+  --responsive-breakpoint-xl: 1200px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,12 +78,15 @@ body {
 main {
   box-sizing: border-box;
   background-color: var(--bg-color);
-  border-radius: 1rem;
-  width: 90vw;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 4rem auto;
   padding: 3rem;
   position: relative;
+
+  @include tablet {
+    border-radius: 3rem;
+    width: 90vw;
+  }
 }
 
 ul.color-switcher {
