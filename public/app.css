@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --primary-color: transparent;
   --font-color: #666;
@@ -20,10 +21,13 @@
     --bg-color: #222; } }
 
 html {
-  background: var(--primary-color) url(bg.png);
+  background: var(--bg-color);
   color: var(--font-color);
   font-size: 62.5%;
   font-family: "Raleway", sans-serif; }
+  @media (min-width: 768px) {
+    html {
+      background: var(--primary-color) url(bg.png); } }
 
 body {
   font-size: 1.6rem; }
@@ -77,10 +81,18 @@ ul.color-switcher li {
   margin: 0.5rem;
   border-radius: 50%;
   border: 2px solid var(--primary-color);
+  border: 2px solid transparent;
   box-sizing: border-box; }
 
 ul.color-switcher li.active {
-  border-color: var(--bg-color); }
+  border-color: var(--bg-color);
+  position: relative; }
+  ul.color-switcher li.active::before {
+    content: '✓';
+    color: var(--bg-color);
+    position: absolute;
+    line-height: 1em;
+    left: 0.1rem; }
 
 nav {
   line-height: 4rem; }
@@ -165,4 +177,7 @@ nav ul li a:hover {
 
 footer {
   text-align: center;
-  color: var(--bg-color); }
+  color: var(--font-color-lighter); }
+  @media (min-width: 768px) {
+    footer {
+      color: var(--bg-color); } }
