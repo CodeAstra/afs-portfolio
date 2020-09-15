@@ -19,7 +19,7 @@
 }
 
 html {
-  background-color: var(--primary-color);
+  background: var(--primary-color) url(bg.png);
   color: var(--font-color);
   font-size: 62.5%;
   font-family: "Raleway", sans-serif;
