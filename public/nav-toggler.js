@@ -2,24 +2,42 @@ const navToggler = {
   isOpen: false,
   handleTogglerClick: function() {
     this.toggler.onclick = (ev) => {
-      this.toggler.style.display = "none";
+      this.toggler.style.visibility = "hidden";
       if (this.isOpen) {
         this.navMenu.classList.remove("open");
       } else {
         this.navMenu.classList.add("open");
       }
-      this.updateTogglerText();
-      this.isOpen = !this.isOpen;
-
+      
       setTimeout(() => {
-        this.toggler.style.display = "block";
+        this.isOpen = !this.isOpen;
+        if (this.isOpen) {
+          this.setClosingTransitionDelays();
+        } else {
+          this.setOpeningTransitionDelays();
+        }
+        this.updateTogglerText();
+        this.toggler.style.visibility = "visible";
       }, 1000);
     }
+  },
+  setClosingTransitionDelays: function() {
+    this.navMenuItems.forEach((navItem, index) => {
+      navItem.style.transitionDelay = `0.${index}s`;
+    });
+    const numberOfNavItems = document.querySelectorAll('nav ul li').length;
+    this.navMenu.style.transitionDelay = `0.${numberOfNavItems + 2}s`;
+  },
+  setOpeningTransitionDelays: function() {
+    this.navMenu.style.transitionDelay = '0s';
+    this.navMenuItems.forEach((navItem, index) => {
+      navItem.style.transitionDelay = `0.${index + 2}s`;
+    });
   },
   setTogglerElements: function() {
     this.toggler = document.querySelector('nav .nav-toggler');
     this.navMenu = document.querySelector('nav ul');
-    this.navMenuItems = document.querySelector('nav ul li');
+    this.navMenuItems = document.querySelectorAll('nav ul li');
   },
   toggler: null,
   togglerTexts: {
@@ -33,6 +51,7 @@ const navToggler = {
   init: function () {
     this.setTogglerElements();
     this.updateTogglerText();
+    this.setOpeningTransitionDelays();
     this.handleTogglerClick();
   },
 };
