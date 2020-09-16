@@ -1,14 +1,6 @@
 const express = require("express");
-const sassMiddleware = require("node-sass-middleware");
 
 const app = express();
-
-app.use(sassMiddleware({
-  src: __dirname + '/styles',
-  dest: __dirname + '/public',
-  debug: true,
-}));
-
 
 app.use(express.static("public"));
 

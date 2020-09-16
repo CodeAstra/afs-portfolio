@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "serve": "node server.js",
+    "sass": "npx node-sass styles/app.scss public/app.css",
+    "sass:watch": "npx node-sass -w styles/app.scss public/app.css",
+    "start": "npm run sass & npm run sass:watch & npm run serve"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "node-sass-middleware": "^0.11.0"
+    "node-sass": "^4.14.1"
   },
   "repository": "git@github.com:CodeAstra/afs-portfolio.git",
   "author": "BV Satyaram <bvsatyaram@gmail.com>",
