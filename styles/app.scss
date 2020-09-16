@@ -215,6 +215,10 @@ nav ul li {
     font-size: 3rem;
     position: relative;
     text-transform: uppercase;
+    position: relative;
+    left: 55rem;
+    transition: left 0.2s ease-in;
+    transition-delay: 0.5s;
 
     &::before {
       content: '';
@@ -238,6 +242,10 @@ nav ul li {
     display: inline-block;
     padding: 0 1rem;
   }
+}
+
+nav ul.open li {
+  left: 0;
 }
 
 nav ul li a {

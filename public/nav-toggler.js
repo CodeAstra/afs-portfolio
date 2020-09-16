@@ -2,21 +2,24 @@ const navToggler = {
   isOpen: false,
   handleTogglerClick: function() {
     this.toggler.onclick = (ev) => {
-      this.isOpen ? this.close() : this.open();
+      this.toggler.style.display = "none";
+      if (this.isOpen) {
+        this.navMenu.classList.remove("open");
+      } else {
+        this.navMenu.classList.add("open");
+      }
       this.updateTogglerText();
+      this.isOpen = !this.isOpen;
+
+      setTimeout(() => {
+        this.toggler.style.display = "block";
+      }, 1000);
     }
-  },
-  close: function() {
-    this.isOpen = false;
-    this.navMenu.classList.remove("open");
-  },
-  open: function() {
-    this.isOpen = true;
-    this.navMenu.classList.add("open");
   },
   setTogglerElements: function() {
     this.toggler = document.querySelector('nav .nav-toggler');
     this.navMenu = document.querySelector('nav ul');
+    this.navMenuItems = document.querySelector('nav ul li');
   },
   toggler: null,
   togglerTexts: {
