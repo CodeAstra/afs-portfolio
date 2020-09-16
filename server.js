@@ -5,7 +5,7 @@ const connectLivereload = require("connect-livereload");
 
 const app = express();
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public'), path.join(__dirname, 'views'));
+liveReloadServer.watch([path.join(__dirname, 'public'), path.join(__dirname, 'views')]);
 
 app.use(express.static("public"));
 app.use(connectLivereload());
